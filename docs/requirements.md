@@ -8,7 +8,7 @@ Screens: design canvas "Jabuto — Meditation Timer" (claude.ai artifact `6KUVL1
 - Meditation timer. No account, no server, no analytics.
 - Platform: Android first. Web later, built from the same web frontend, with known limitations (§10).
 - Package ID `net.litynski.jabuto`. Display name "Jabuto"; the name is not shown on the Home screen.
-- Interface in English. All strings in resource files so other languages can be added.
+- Interface in English only; strings are hardcoded. Localisation is out of scope.
 - Visual language: typography and horizontal rules only. Themes: System (default), Light, Dark.
 
 ## 2. Presets
@@ -161,12 +161,17 @@ Screens: design canvas "Jabuto — Meditation Timer" (claude.ai artifact `6KUVL1
 - Licences.
 - Footer: "No account. Everything stays on this device."
 
-## 12. Licences
+## 12. Launcher icon
 
-- Bell sounds: ≤ 5, CC0 preferred; CC BY 3.0/4.0 allowed when clearly better. Never NC, ND or Sampling+. Source URL, author and licence of each sound recorded in `SOUNDS.md`.
+- "Ja" in Inter Tight, black on a solid white ground, left-aligned with generous padding (in the manner of JetBrains product icons).
+- Adaptive icon (foreground inside the 66 dp safe zone) plus a monochrome themed variant.
+
+## 13. Licences
+
+- Bell sounds: ≤ 5, chosen by the owner. Until then, placeholder bells synthesised in the repo (own work, CC0). Final sounds: CC0 preferred; CC BY 3.0/4.0 allowed when clearly better. Never NC, ND or Sampling+. Source URL, author and licence of each sound recorded in `SOUNDS.md`.
 - Typeface: Inter Tight, SIL Open Font License 1.1.
 - Licences screen lists sounds, typeface and all bundled open-source libraries with full licence texts.
 
-## 13. Out of scope for v1
+## 14. Out of scope for v1
 
-Interval bell generator (designed, postponed); screen transitions; history and statistics screens; streak freezes; sync or accounts; cloud backup; quick sit without a preset; per-bell sounds for interval bells; editing a single bell's time; localisation beyond English.
+Interval bell generator (designed, postponed); screen transitions; history and statistics screens; streak freezes; sync or accounts; cloud backup; quick sit without a preset; per-bell sounds for interval bells; editing a single bell's time; localisation.

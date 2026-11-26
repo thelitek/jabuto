@@ -44,7 +44,8 @@ App-owned `AutomaticZenRule` "Jabuto session", interruption filter that lets ala
 
 - One light-DOM custom element per screen; a ~30-line router on `history.pushState` (back gesture works) with a single swap function, so View Transitions can be added later.
 - State in `@preact/signals-core`; screens build DOM once from `<template>`s and bind nodes with `effect`. User text only via `textContent`.
-- Static feel: bundled, preloaded Inter Tight; splash stays until Home is drawn with real data; reserved slots for notices; `tnum` numerals; no transitions.
+- Strings hardcoded in English (no localisation layer).
+- Static feel: bundled, preloaded Inter Tight (400 and 700, Latin subset, from `@fontsource/inter-tight`, committed with `OFL.txt`); splash stays until Home is drawn with real data; reserved slots for notices; `tnum` numerals; no transitions.
 
 ## Tooling
 
@@ -52,12 +53,26 @@ App-owned `AutomaticZenRule` "Jabuto session", interruption filter that lets ala
 - Playwright for the web build, using `page.clock` to fast-forward sessions.
 - TypeScript strict.
 
+## Sounds
+
+Placeholder bells are synthesised by a script in the repo (decaying partials, rendered to OGG + MP3 with ffmpeg) and listed in `SOUNDS.md` as own work, CC0. The owner replaces them with chosen recordings later; the script then only trims, normalises and encodes.
+
 ## Testing
 
 - Test-first for `src/core`.
 - Kotlin unit tests for the service timing, written after.
 - Playwright against the web build on every push.
 - `docs/device-checklist.md`: screen off 30 min, DND on/off and user DND blocking media, volume 0, killed process, reboot, device-to-device transfer.
+
+## Work plan
+
+Stacked PRs, each based on the previous one, so the last branch contains the whole app:
+
+1. Skeleton: Vite+, CI, release-please, empty Capacitor app, Pages.
+2. Core, test-first: presets, session plan, streak, log, import/export.
+3. Web UI, web runner, Playwright.
+4. Android SessionPlugin: service, bells, notification, DND, journal.
+5. Placeholder sounds, icon, licences screen, device checklist.
 
 ## Release
 
