@@ -112,17 +112,17 @@ Screens: design canvas "Jabuto — Meditation Timer" (claude.ai artifact `6KUVL1
 - Not shown in the app (no history or statistics screens in v1).
 - Entry fields (durations in integer seconds):
 
-| Field | Type | Notes |
-|---|---|---|
-| `id` | UUID | |
-| `startedAt` | ISO 8601 with UTC offset | start of warmup |
-| `presetId` | UUID or null | null once the preset is deleted |
-| `preset` | object | snapshot: name, warmupDuration, meditationDuration, bells, sounds, strikes |
-| `warmupDuration` | int | actual |
-| `meditationDuration` | int | actual; pauses and overtime excluded |
-| `pauseDuration` | int | total |
-| `overtimeDuration` | int | 0–3600 |
-| `outcome` | enum | `completed` \| `endedEarly` \| `interrupted` |
+| Field                | Type                     | Notes                                                                      |
+| -------------------- | ------------------------ | -------------------------------------------------------------------------- |
+| `id`                 | UUID                     |                                                                            |
+| `startedAt`          | ISO 8601 with UTC offset | start of warmup                                                            |
+| `presetId`           | UUID or null             | null once the preset is deleted                                            |
+| `preset`             | object                   | snapshot: name, warmupDuration, meditationDuration, bells, sounds, strikes |
+| `warmupDuration`     | int                      | actual                                                                     |
+| `meditationDuration` | int                      | actual; pauses and overtime excluded                                       |
+| `pauseDuration`      | int                      | total                                                                      |
+| `overtimeDuration`   | int                      | 0–3600                                                                     |
+| `outcome`            | enum                     | `completed` \| `endedEarly` \| `interrupted`                               |
 
 ## 9. Data: storage, export, import, backup
 

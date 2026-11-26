@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: voidzero-dev/setup-vp@v1.22.0
+        with:
+          node-version: '22'
+          cache: true
+      - run: vp check
+      - run: vp test
+      - run: vp build
+      - uses: actions/upload-artifact@v7.0.2
+        with:
+          name: web
+          path: dist
+
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: voidzero-dev/setup-vp@v1.22.0
+        with:
+          node-version: '22'
+          cache: true
+      - uses: actions/setup-java@v6.3.0
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: gradle
+      - run: vp run android:sync
+      - run: ./gradlew --no-daemon assembleDebug testDebugUnitTest
+        working-directory: android
+      - uses: actions/upload-artifact@v7.0.2
+        with:
+          name: jabuto-debug-apk
+          path: android/app/build/outputs/apk/debug/*.apk
