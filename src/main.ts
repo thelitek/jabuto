@@ -1,6 +1,6 @@
 import { effect, untracked } from '@preact/signals-core';
 import { createPlatform } from './platform';
-import { explanation, init, settings } from './ui/app';
+import { explanation, getPlatform, init, settings } from './ui/app';
 import { h } from './ui/dom';
 import { route, type Route } from './ui/router';
 import { HomeScreen } from './ui/screens/home';
@@ -88,6 +88,7 @@ async function main() {
 
   await document.fonts.ready;
   document.documentElement.classList.add('ready');
+  requestAnimationFrame(() => getPlatform().device.ready?.());
 }
 
 void main();

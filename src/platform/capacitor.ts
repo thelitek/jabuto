@@ -33,6 +33,7 @@ interface SessionPlugin {
   saveFile(options: { name: string; text: string }): Promise<{ saved: boolean }>;
   openFile(): Promise<{ text?: string }>;
   exit(): Promise<void>;
+  ready(): Promise<void>;
   addListener(event: 'tick', fn: (t: Tick) => void): Promise<PluginListenerHandle>;
   addListener(
     event: 'finished',
@@ -172,6 +173,7 @@ export async function createCapacitorPlatform(): Promise<Platform> {
       requestNotifications: async () => (await Session.requestNotifications()).access,
       onBack: (fn) => void Session.addListener('back', fn),
       exit: () => void Session.exit(),
+      ready: () => void Session.ready(),
     },
   };
 }
