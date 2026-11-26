@@ -6,6 +6,7 @@ A meditation timer for Android (web later). No account; presets and the session 
 - [Technical overview](docs/technical-overview.md)
 - [Domain glossary](CONTEXT.md)
 - [Architecture decisions](docs/adr/)
+- [Device checklist](docs/device-checklist.md)
 
 ## Development
 

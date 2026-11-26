@@ -80,6 +80,8 @@ export interface Device {
   onBack?(fn: () => void): void;
   /** Leaves the app (Back on the first screen). */
   exit?(): void;
+  /** The first screen is drawn: the Android splash screen may go. */
+  ready?(): void;
 }
 
 export interface Platform {

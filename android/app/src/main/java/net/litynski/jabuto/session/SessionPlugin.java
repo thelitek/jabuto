@@ -34,7 +34,14 @@ import org.json.JSONObject;
 )
 public class SessionPlugin extends Plugin implements SessionService.Listener {
 
+    private static volatile boolean ready;
+
     private final Handler handler = new Handler(Looper.getMainLooper());
+
+    /** Whether the web layer has drawn its first screen; the splash screen waits for it. */
+    public static boolean isReady() {
+        return ready;
+    }
     @Nullable
     private Bells previewBells;
     private int previewStream;
@@ -334,6 +341,12 @@ public class SessionPlugin extends Plugin implements SessionService.Listener {
     }
 
     // App
+
+    @PluginMethod
+    public void ready(PluginCall call) {
+        ready = true;
+        call.resolve();
+    }
 
     /** Leaves the app the way Back on the first screen normally does. */
     @PluginMethod
