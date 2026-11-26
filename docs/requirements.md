@@ -32,7 +32,7 @@ Screens: design canvas "Jabuto — Meditation Timer" (claude.ai artifact `6KUVL1
 ### 2.2 Interval bells
 
 - Interval bells are a plain list of times, each to the second (e.g. 02:30, 05:00, 07:30).
-- **Generator:** an interval (`mm:ss`, or none) plus Generate. First bell at 1 × interval, then every interval. Generate replaces the whole list, including bells added by hand. No confirmation. Interval "none" + Generate clears the list.
+- An interval generator ("every 02:30") is postponed; see [`later/interval-generator.md`](later/interval-generator.md).
 - **Remove:** any single bell can be removed.
 - **Add bell:** opens an `mm:ss` input prefilled with the midpoint of the largest gap.
 - A bell cannot be edited; remove it and add another.
@@ -169,4 +169,4 @@ Screens: design canvas "Jabuto — Meditation Timer" (claude.ai artifact `6KUVL1
 
 ## 13. Out of scope for v1
 
-History and statistics screens; streak freezes; sync or accounts; cloud backup; quick sit without a preset; per-bell sounds for interval bells; editing a single bell's time; localisation beyond English.
+Interval bell generator (designed, postponed); screen transitions; history and statistics screens; streak freezes; sync or accounts; cloud backup; quick sit without a preset; per-bell sounds for interval bells; editing a single bell's time; localisation beyond English.

@@ -24,8 +24,11 @@ A sound event in a session. Three roles:
 
 Each role has a **sound** (one of the bundled sounds, or Silent). Start and end bells also have a **strike count** (1–3). All interval bells share one sound and strike once.
 
-**Generator**
-Fills a preset's interval bells from an interval ("every 02:30"). Regenerating replaces the whole list, including bells added by hand. With no interval it clears the list.
+**Session plan**
+The ordered list of timed events (warmup end, bells, end) computed from a preset when a session starts. The runner (native on Android, JavaScript on web) executes it; the UI only displays what the runner reports.
+
+**Journal**
+A small file the Android session service keeps while a session runs (plan, start, pauses, phase). Turned into a log entry when the session ends, or at the next launch after a crash.
 
 **Overtime**
 Time after the end bell until the user presses End. Shown as `+mm:ss`. Capped at 60 minutes, then the session ends on its own.
