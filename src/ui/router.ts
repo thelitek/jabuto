@@ -80,3 +80,11 @@ export function goBack(fallback: Route) {
   if (stack.at(-2) === href(fallback)) history.back();
   else navigate(fallback, { replace: true });
 }
+
+/** Android's back button: previous screen if there is one, otherwise false (leave the app). */
+export function back(): boolean {
+  if (route.value.name === 'home') return false;
+  if (stack.length > 1) history.back();
+  else navigate({ name: 'home' }, { replace: true });
+  return true;
+}

@@ -10,7 +10,7 @@ src/ui         light-DOM custom elements, one per screen; router; signals-based 
 src/platform   adapters behind interfaces: Runner, Storage, Files
                ├─ web/        JS runner on the Web Audio clock, IndexedDB, download / <input type=file>
                └─ capacitor/  SessionPlugin bridge, IndexedDB (in the WebView), plugin save/open dialogs
-android/       Capacitor project + the Kotlin SessionPlugin
+android/       Capacitor project + the Java SessionPlugin
 docs/          requirements, glossary, ADRs, manual device checklist
 ```
 
@@ -18,7 +18,7 @@ docs/          requirements, glossary, ADRs, manual device checklist
 
 - `@capacitor/core`, `@capacitor/android` (Capacitor 8)
 - `@preact/signals-core`
-- Our own Kotlin `SessionPlugin`
+- Our own Java `SessionPlugin`
 
 No UI framework, no templating library, no other Capacitor plugins.
 
@@ -60,7 +60,7 @@ Placeholder bells are synthesised by a script in the repo (decaying partials, re
 ## Testing
 
 - Test-first for `src/core`.
-- Kotlin unit tests for the service timing, written after.
+- Java unit tests for the service timing, written after.
 - Playwright against the web build on every push.
 - `docs/device-checklist.md`: screen off 30 min, DND on/off and user DND blocking media, volume 0, killed process, reboot, device-to-device transfer.
 

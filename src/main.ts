@@ -1,6 +1,7 @@
 import { effect, untracked } from '@preact/signals-core';
 import { createPlatform } from './platform';
-import { init, settings } from './ui/app';
+import { explanation, init, settings } from './ui/app';
+import { h } from './ui/dom';
 import { route, type Route } from './ui/router';
 import { HomeScreen } from './ui/screens/home';
 import { LicencesScreen } from './ui/screens/licences';
@@ -50,6 +51,39 @@ async function main() {
     // Building a screen reads signals; only the route may re-run this effect.
     untracked(() => app.replaceChildren(screenFor(r)));
     window.scrollTo(0, 0);
+  });
+
+  // Explanations before Android permission prompts, shown over any screen.
+  const text = h('p', { class: 'row-title explain-text' });
+  const sheet = h(
+    'dialog',
+    { class: 'sheet' },
+    text,
+    h(
+      'div',
+      { class: 'row-actions' },
+      h('button', {
+        class: 'small-action',
+        text: 'Not now',
+        on: { click: () => explanation.value?.answer(false) },
+      }),
+      h('button', {
+        class: 'small-action strong',
+        text: 'Continue',
+        on: { click: () => explanation.value?.answer(true) },
+      }),
+    ),
+  );
+  sheet.addEventListener('cancel', (e) => {
+    e.preventDefault();
+    explanation.value?.answer(false);
+  });
+  document.body.append(sheet);
+  effect(() => {
+    const e = explanation.value;
+    text.textContent = e?.text ?? '';
+    if (e && !sheet.open) sheet.showModal();
+    if (!e && sheet.open) sheet.close();
   });
 
   await document.fonts.ready;

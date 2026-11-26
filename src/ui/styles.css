@@ -504,3 +504,9 @@ a {
   white-space: pre-wrap;
   color: var(--mute);
 }
+
+.explain-text {
+  margin: 0 0 24px;
+  font-size: 22px;
+  line-height: 1.25;
+}
