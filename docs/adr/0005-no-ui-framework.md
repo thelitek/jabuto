@@ -8,7 +8,7 @@ About six screens, mostly static; during a session only one numeral changes. The
 
 ## Decision
 
-One light-DOM custom element per screen (no shadow DOM, so the shared typography applies everywhere). A small router on `history.pushState` with a single swap function. State in `@preact/signals-core`; screens build their DOM once from `<template>`s and bind nodes with `effect`. User text only through `textContent`.
+One light-DOM custom element per screen (no shadow DOM, so the shared typography applies everywhere). A small router on `history.pushState` with a single swap function. State in `@preact/signals-core`; screens build their DOM once with a small `h()` helper (no markup strings) and bind nodes with `effect`. User text only through `textContent`.
 
 ## Consequences
 

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vite-plus/test';
-import { addDays, formatClock, formatOvertime, localDay, toLocalIso } from './time';
+import { addDays, formatClock, formatOvertime, localDay, parseClock, toLocalIso } from './time';
 
 describe('formatClock', () => {
   it('shows minutes and seconds below an hour', () => {
@@ -44,5 +44,26 @@ describe('local dates', () => {
   it('moves days across month and year ends', () => {
     expect(addDays('2026-03-01', -1)).toBe('2026-02-28');
     expect(addDays('2026-12-31', 1)).toBe('2027-01-01');
+  });
+});
+
+describe('parseClock', () => {
+  it('reads m:ss and h:mm:ss', () => {
+    expect(parseClock('2:30')).toBe(150);
+    expect(parseClock('02:30')).toBe(150);
+    expect(parseClock('1:00:00')).toBe(3600);
+    expect(parseClock(' 90:00 ')).toBe(5400);
+  });
+
+  it('reads a plain number as minutes', () => {
+    expect(parseClock('20')).toBe(1200);
+  });
+
+  it('rejects anything else', () => {
+    expect(parseClock('')).toBeNull();
+    expect(parseClock('2:75')).toBeNull();
+    expect(parseClock('1:60:00')).toBeNull();
+    expect(parseClock('abc')).toBeNull();
+    expect(parseClock('1:2:3:4')).toBeNull();
   });
 });

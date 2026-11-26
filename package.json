@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "@capacitor/android": "8.6.3",
-    "@capacitor/core": "8.6.3"
+    "@capacitor/core": "8.6.3",
+    "@preact/signals-core": "1.14.5"
   },
   "devDependencies": {
     "@capacitor/cli": "8.6.3",
+    "@playwright/test": "1.63.0",
+    "@types/node": "22.20.7",
     "typescript": "7.0.2",
     "vite-plus": "1.8.0"
   },
