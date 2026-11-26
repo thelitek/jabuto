@@ -10,4 +10,4 @@ When it comes back, these are the decisions already made:
 - After generating, the bells are a plain list: each can be removed, more can be added by hand.
 - Changing the meditation duration does not regenerate: bells that no longer fit are dropped, nothing is added when it grows.
 
-Layout (preset editor, Interval bells section): `Every  05:00` with **Generate** on the same line, steppers below, then the Sound row, the bell list, Add bell, and the fixed End row. A working version was on the design canvas, board "2 · Preset", before it was removed.
+Layout (preset editor, Interval bells section): `Every  05:00` with **Generate** on the same line, steppers below, then the Sound row, the bell list, Add bell, and the fixed End row. A working copy of that board is kept next to this file: [`preset-with-generator.dc.html`](preset-with-generator.dc.html) (design-canvas format).

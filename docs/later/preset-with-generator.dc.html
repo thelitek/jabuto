@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Preset</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&amp;display=swap">
+<style>
+body{margin:0}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+a{text-decoration:none;color:inherit}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+</style>
+</helmet>
+<div style="width: 390px; height: 1560px; box-sizing: border-box; padding: 12px 24px 24px; display: flex; flex-direction: column; background: {{bg}}; color: {{fg}}; font-family: 'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased">
+  <div style="display: flex; align-items: center; height: 56px">
+    <a href="Main.dc.html" style="display: flex; align-items: center; min-height: 44px; min-width: 48px; font-size: 15px">Back</a>
+  </div>
+
+  <div style="margin-top: 16px">
+    <div style="font-size: 13px; color: {{mute}}">Preset</div>
+    <div style="font-size: 48px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; margin-top: 8px">Morning</div>
+  </div>
+
+  <div style="margin-top: 40px">
+    <div style="font-size: 13px; color: {{mute}}">Warmup</div>
+    <div style="font-size: 56px; font-weight: 700; letter-spacing: -0.035em; line-height: 0.9; margin: 12px 0 0 -3px; font-feature-settings: 'tnum'">{{warmup}}</div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 14px; border-top: 1px solid {{rule}}">
+      <button onClick="{{wMinus60}}" aria-label="Shorten warmup by 1 minute" style="min-height: 52px; font-size: 17px; font-feature-settings: 'tnum'">−1:00</button>
+      <button onClick="{{wMinus10}}" aria-label="Shorten warmup by 10 seconds" style="min-height: 52px; font-size: 17px; font-feature-settings: 'tnum'">−0:10</button>
+      <button onClick="{{wPlus10}}" aria-label="Lengthen warmup by 10 seconds" style="min-height: 52px; font-size: 17px; font-feature-settings: 'tnum'">+0:10</button>
+      <button onClick="{{wPlus60}}" aria-label="Lengthen warmup by 1 minute" style="min-height: 52px; font-size: 17px; font-feature-settings: 'tnum'">+1:00</button>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px">
+    <div style="font-size: 13px; color: {{mute}}; padding-bottom: 14px">Start bell</div>
+    <a href="Sound.dc.html" aria-label="Start bell sound: Bowl, 1 strike" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; border-top: 1px solid {{rule}}; border-bottom: 1px solid {{rule}}">
+      <span style="font-size: 28px; letter-spacing: -0.01em">Bowl</span>
+      <span style="font-size: 17px; color: {{mute}}; font-feature-settings: 'tnum'">1×</span>
+    </a>
+  </div>
+
+  <div style="margin-top: 40px">
+    <div style="font-size: 13px; color: {{mute}}">Length</div>
+    <div style="font-size: 96px; font-weight: 700; letter-spacing: -0.045em; line-height: 0.8; margin: 16px 0 0 -6px; font-feature-settings: 'tnum'">{{length}}</div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 14px; border-top: 1px solid {{rule}}">
+      <button onClick="{{lMinus300}}" aria-label="Shorten by 5 minutes" style="min-height: 52px; font-size: 17px; font-feature-settings: 'tnum'">−5:00</button>
+      <button onClick="{{lMinus60}}" aria-label="Shorten by 1 minute" style="min-height: 52px; font-size: 17px; font-feature-settings: 'tnum'">−1:00</button>
+      <button onClick="{{lPlus60}}" aria-label="Lengthen by 1 minute" style="min-height: 52px; font-size: 17px; font-feature-settings: 'tnum'">+1:00</button>
+      <button onClick="{{lPlus300}}" aria-label="Lengthen by 5 minutes" style="min-height: 52px; font-size: 17px; font-feature-settings: 'tnum'">+5:00</button>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px">
+    <div style="font-size: 13px; color: {{mute}}">Interval bells</div>
+    <div style="display: flex; align-items: baseline; justify-content: space-between; margin-top: 12px">
+      <div style="display: flex; align-items: baseline; gap: 12px">
+        <span style="font-size: 17px">Every</span>
+        <span style="font-size: 56px; font-weight: 700; letter-spacing: -0.035em; line-height: 0.9; font-feature-settings: 'tnum'">{{interval}}</span>
+      </div>
+      <button onClick="{{generate}}" style="min-height: 44px; min-width: 48px; text-align: right; font-size: 17px; font-weight: 700">Generate</button>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 14px; border-top: 1px solid {{rule}}">
+      <button onClick="{{iMinus60}}" aria-label="Shorten interval by 1 minute" style="min-height: 52px; font-size: 17px; font-feature-settings: 'tnum'">−1:00</button>
+      <button onClick="{{iMinus10}}" aria-label="Shorten interval by 10 seconds" style="min-height: 52px; font-size: 17px; font-feature-settings: 'tnum'">−0:10</button>
+      <button onClick="{{iPlus10}}" aria-label="Lengthen interval by 10 seconds" style="min-height: 52px; font-size: 17px; font-feature-settings: 'tnum'">+0:10</button>
+      <button onClick="{{iPlus60}}" aria-label="Lengthen interval by 1 minute" style="min-height: 52px; font-size: 17px; font-feature-settings: 'tnum'">+1:00</button>
+    </div>
+    <a href="Sound.dc.html" aria-label="Interval bell sound: Small bell" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; border-top: 1px solid {{rule}}">
+      <span style="font-size: 17px; color: {{mute}}">Sound</span>
+      <span style="font-size: 17px">Small bell</span>
+    </a>
+
+    <sc-for list="{{bells}}" as="b" hint-placeholder-count="3">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid {{rule}}">
+        <span style="font-size: 28px; letter-spacing: -0.01em; min-height: 52px; display: flex; align-items: center; font-feature-settings: 'tnum'">{{b.time}}</span>
+        <button onClick="{{b.remove}}" aria-label="{{b.aria}}" style="min-height: 52px; min-width: 64px; text-align: right; font-size: 13px; color: {{mute}}">Remove</button>
+      </div>
+    </sc-for>
+    <button onClick="{{addBell}}" style="display: flex; align-items: center; width: 100%; min-height: 52px; border-top: 1px solid {{rule}}; font-size: 28px; letter-spacing: -0.01em; color: {{mute}}">Add bell</button>
+    <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid {{rule}}; color: {{mute}}">
+      <span style="font-size: 28px; letter-spacing: -0.01em; min-height: 52px; display: flex; align-items: center; font-feature-settings: 'tnum'">{{length}}</span>
+      <span style="font-size: 13px">End</span>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px">
+    <div style="font-size: 13px; color: {{mute}}; padding-bottom: 14px">End bell</div>
+    <a href="Sound.dc.html" aria-label="End bell sound: Bowl, 3 strikes" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; border-top: 1px solid {{rule}}; border-bottom: 1px solid {{rule}}">
+      <span style="font-size: 28px; letter-spacing: -0.01em">Bowl</span>
+      <span style="font-size: 17px; color: {{mute}}; font-feature-settings: 'tnum'">3×</span>
+    </a>
+  </div>
+
+  <div style="flex: 1"></div>
+
+  <button style="min-height: 44px; font-size: 13px; color: {{mute}}">Delete preset</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false,"section":"Theme"},"$preview":{"width":390,"height":1560}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { warmup: 30, length: 1200, interval: 300, bells: [300, 600, 900] };
+  }
+  fmt(s) {
+    const m = Math.floor(s / 60);
+    return String(m).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+  }
+  // A bell may not sit within 5 s of the end.
+  fits(b, length) {
+    return b > 0 && b < length - 5;
+  }
+  setWarmup(d) {
+    this.setState({ warmup: Math.max(0, Math.min(600, this.state.warmup + d)) });
+  }
+  setLength(d) {
+    const length = Math.max(30, Math.min(10800, this.state.length + d));
+    this.setState({ length, bells: this.state.bells.filter((b) => this.fits(b, length)) });
+  }
+  adjInterval(d) {
+    this.setState({ interval: Math.max(0, Math.min(this.state.length, this.state.interval + d)) });
+  }
+  // Regenerate replaces the whole list, manual bells included.
+  generate() {
+    const { interval, length } = this.state;
+    const bells = [];
+    if (interval > 0) {
+      for (let t = interval; this.fits(t, length); t += interval) bells.push(t);
+    }
+    this.setState({ bells });
+  }
+  // New bell goes to the midpoint of the largest gap.
+  addBell() {
+    const { bells, length } = this.state;
+    const points = [0, ...bells, length];
+    let best = 0;
+    let at = null;
+    for (let i = 1; i < points.length; i++) {
+      const gap = points[i] - points[i - 1];
+      if (gap > best) { best = gap; at = Math.round(points[i - 1] + gap / 2); }
+    }
+    if (at === null || best < 2 || !this.fits(at, length) || bells.includes(at)) return;
+    this.setState({ bells: [...bells, at].sort((a, b) => a - b) });
+  }
+  renderVals() {
+    const dark = this.props.dark ?? false;
+    const t = dark
+      ? { bg: '#111111', fg: '#F2F2F0', mute: '#9A9A98', rule: '#333333' }
+      : { bg: '#FAFAF8', fg: '#111111', mute: '#6B6B69', rule: '#D8D8D5' };
+    const { warmup, length, interval, bells } = this.state;
+    return {
+      ...t,
+      warmup: this.fmt(warmup),
+      length: this.fmt(length),
+      interval: interval > 0 ? this.fmt(interval) : 'none',
+      bells: bells.map((s) => ({
+        time: this.fmt(s),
+        aria: 'Remove bell at ' + this.fmt(s),
+        remove: () => this.setState({ bells: this.state.bells.filter((x) => x !== s) })
+      })),
+      wMinus60: () => this.setWarmup(-60),
+      wMinus10: () => this.setWarmup(-10),
+      wPlus10: () => this.setWarmup(10),
+      wPlus60: () => this.setWarmup(60),
+      lMinus300: () => this.setLength(-300),
+      lMinus60: () => this.setLength(-60),
+      lPlus60: () => this.setLength(60),
+      lPlus300: () => this.setLength(300),
+      iMinus60: () => this.adjInterval(-60),
+      iMinus10: () => this.adjInterval(-10),
+      iPlus10: () => this.adjInterval(10),
+      iPlus60: () => this.adjInterval(60),
+      generate: () => this.generate(),
+      addBell: () => this.addBell()
+    };
+  }
+}
+</script>
+</body>
+</html>
