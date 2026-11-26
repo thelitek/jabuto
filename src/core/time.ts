@@ -44,3 +44,20 @@ export function addDays(day: string, days: number): string {
   date.setUTCDate(date.getUTCDate() + days);
   return date.toISOString().slice(0, 10);
 }
+
+/**
+ * Reads what a person typed as a duration: `m:ss`, `h:mm:ss`, or plain minutes.
+ * Returns whole seconds, or null if it is not a duration.
+ */
+export function parseClock(text: string): number | null {
+  const t = text.trim();
+  if (/^\d{1,3}$/.test(t)) return Number(t) * 60;
+  const parts = t.split(':');
+  if (parts.length < 2 || parts.length > 3 || !parts.every((p) => /^\d{1,3}$/.test(p))) return null;
+  const nums = parts.map(Number);
+  const s = nums.at(-1)!;
+  const m = nums.at(-2)!;
+  if (s >= 60 || (parts.length === 3 && m >= 60)) return null;
+  const h = parts.length === 3 ? nums[0]! : 0;
+  return h * 3600 + m * 60 + s;
+}

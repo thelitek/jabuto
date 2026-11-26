@@ -43,7 +43,7 @@ App-owned `AutomaticZenRule` "Jabuto session", interruption filter that lets ala
 ## UI
 
 - One light-DOM custom element per screen; a ~30-line router on `history.pushState` (back gesture works) with a single swap function, so View Transitions can be added later.
-- State in `@preact/signals-core`; screens build DOM once from `<template>`s and bind nodes with `effect`. User text only via `textContent`.
+- State in `@preact/signals-core`; screens build DOM once with a small `h()` helper and bind nodes with `effect`. User text only via `textContent`.
 - Strings hardcoded in English (no localisation layer).
 - Static feel: bundled, preloaded Inter Tight (400 and 700, Latin subset, from `@fontsource/inter-tight`, committed with `OFL.txt`); splash stays until Home is drawn with real data; reserved slots for notices; `tnum` numerals; no transitions.
 
@@ -70,9 +70,9 @@ Stacked PRs, each based on the previous one, so the last branch contains the who
 
 1. Skeleton: Vite+, CI, release-please, empty Capacitor app, Pages.
 2. Core, test-first: presets, session plan, streak, log, import/export.
-3. Web UI, web runner, Playwright.
+3. Web UI, web runner, Playwright, placeholder sounds, licences screen.
 4. Android SessionPlugin: service, bells, notification, DND, journal.
-5. Placeholder sounds, icon, licences screen, device checklist.
+5. Launcher icon and splash, device checklist.
 
 ## Release
 
