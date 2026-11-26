@@ -18,6 +18,7 @@ The planned time between the start bell and the end bell. Pauses are excluded; w
 
 **Bell**
 A sound event in a session. Three roles:
+
 - **Start bell** — ends warmup and begins meditation.
 - **Interval bell** — at a point in meditation time, to the second.
 - **End bell** — ends planned meditation and begins overtime.

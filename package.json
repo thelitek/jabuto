@@ -1,0 +1,23 @@
+{
+  "name": "jabuto",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Meditation timer. No account; data stays on the device.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "android:sync": "vp build && cap sync android"
+  },
+  "dependencies": {
+    "@capacitor/android": "8.6.3",
+    "@capacitor/core": "8.6.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.6.3",
+    "typescript": "7.0.2",
+    "vite-plus": "1.8.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
