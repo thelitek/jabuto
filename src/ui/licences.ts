@@ -2,6 +2,7 @@ import capacitorAndroid from '../../node_modules/@capacitor/android/LICENSE?raw'
 import capacitorCore from '../../node_modules/@capacitor/core/LICENSE?raw';
 import signals from '../../node_modules/@preact/signals-core/LICENSE?raw';
 import ofl from '../../public/fonts/OFL.txt?raw';
+import apache from './licence-texts/apache-2.0.txt?raw';
 import { SOUNDS } from '../core';
 
 export interface Credit {
@@ -40,6 +41,11 @@ export const CREDITS: CreditGroup[] = [
       { name: 'Capacitor', detail: 'Drifty Co. · MIT', text: capacitorCore },
       { name: 'Capacitor Android', detail: 'Drifty Co. · MIT', text: capacitorAndroid },
       { name: 'Preact Signals', detail: 'Preact Team · MIT', text: signals },
+      {
+        name: 'AndroidX',
+        detail: 'The Android Open Source Project · Apache 2.0 (Android app)',
+        text: apache,
+      },
     ],
   },
 ];

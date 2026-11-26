@@ -1,3 +1,5 @@
+import { Capacitor } from '@capacitor/core';
+import { createCapacitorPlatform } from './capacitor';
 import { createIdbStorage } from './idb';
 import type { Device, Platform } from './types';
 import { webFiles } from './web-files';
@@ -13,6 +15,7 @@ const webDevice: Device = {
 };
 
 export async function createPlatform(): Promise<Platform> {
+  if (Capacitor.isNativePlatform()) return createCapacitorPlatform();
   return {
     storage: await createIdbStorage(),
     runner: createWebRunner(),

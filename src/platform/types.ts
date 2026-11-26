@@ -76,6 +76,10 @@ export interface Device {
   dndAccess(): Promise<Access>;
   requestDndAccess(): Promise<Access>;
   requestNotifications(): Promise<Access>;
+  /** Android's back button or gesture; the web uses the browser's history instead. */
+  onBack?(fn: () => void): void;
+  /** Leaves the app (Back on the first screen). */
+  exit?(): void;
 }
 
 export interface Platform {

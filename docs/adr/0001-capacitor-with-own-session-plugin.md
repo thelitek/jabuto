@@ -1,4 +1,4 @@
-# 1. Capacitor with one in-house Kotlin plugin
+# 1. Capacitor with one in-house native plugin
 
 Status: accepted, 2026-11-26
 
@@ -8,8 +8,8 @@ The frontend is web technology. On Android the app needs a background service, D
 
 ## Decision
 
-Capacitor 8. Everything native lives in one in-house Kotlin `SessionPlugin`: foreground service, bell playback, DND rule, notification, session journal, save/open file dialogs. No community plugins.
+Capacitor 8. Everything native lives in one in-house `SessionPlugin`, written in Java like Capacitor's own Android code so the build needs no Kotlin toolchain: foreground service, bell playback, DND rule, notification, session journal, save/open file dialogs. No community plugins.
 
 ## Consequences
 
-Existing plugins don't fit: local notifications follow notification volume and DND (our own rule would mute them) and can't pause; background-runner runs roughly every 15 minutes; foreground-service plugins keep the process alive but leave timing in throttled JS; no maintained plugin handles app-owned DND rules. We own a few hundred lines of Kotlin instead of several dependencies.
+Existing plugins don't fit: local notifications follow notification volume and DND (our own rule would mute them) and can't pause; background-runner runs roughly every 15 minutes; foreground-service plugins keep the process alive but leave timing in throttled JS; no maintained plugin handles app-owned DND rules. We own a few hundred lines of Java instead of several dependencies.

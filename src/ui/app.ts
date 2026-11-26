@@ -15,7 +15,7 @@ import {
   type SessionRecord,
 } from '../core';
 import { DEFAULT_SETTINGS, type Platform, type Settings, type Snapshot } from '../platform';
-import { navigate, setGuard } from './router';
+import { back, navigate, setGuard } from './router';
 
 let platform: Platform;
 
@@ -27,6 +27,20 @@ export const session = signal<Snapshot | null>(null);
 export const confirmingEnd = signal(false);
 /** Whether DND access was refused (Android only). */
 export const dndDenied = signal(false);
+/** A one-line explanation shown before a system permission prompt. */
+export const explanation = signal<{ text: string; answer: (ok: boolean) => void } | null>(null);
+
+function explain(text: string): Promise<boolean> {
+  return new Promise((resolve) => {
+    explanation.value = {
+      text,
+      answer: (ok) => {
+        explanation.value = null;
+        resolve(ok);
+      },
+    };
+  });
+}
 
 const day = signal(today());
 export const currentStreak = computed(() => streak(log.value, day.value));
@@ -64,6 +78,12 @@ export async function init(p: Platform) {
     guardSession();
     navigate({ name: 'session' }, { replace: true });
   }
+
+  p.device.onBack?.(() => {
+    if (explanation.value) explanation.value.answer(false);
+    else if (confirmingEnd.value) keepSitting();
+    else if (!back()) p.device.exit?.();
+  });
 
   // Keep "today" current for the streak when the app stays open past midnight.
   setInterval(() => (day.value = today()), 60_000);
@@ -157,9 +177,14 @@ async function askPermissionsOnce() {
   }
   if (asked) return;
   if (settings.value.dnd && (await device.dndAccess()) === 'denied') {
-    dndDenied.value = (await device.requestDndAccess()) === 'denied';
+    const ok = await explain(
+      'Jabuto turns on Do Not Disturb from warmup to the end bell. Allow it on the next screen.',
+    );
+    dndDenied.value = !ok || (await device.requestDndAccess()) === 'denied';
   }
-  await device.requestNotifications();
+  if (await explain('Jabuto shows the time left, Pause and End in a notification while you sit.')) {
+    await device.requestNotifications();
+  }
 }
 
 export async function startSession(preset: Preset) {
